@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Кроты</title>
+	<style type="text/css">
+		.hole{
+			height:200px;
+			width:200px;
+			margin-left:10px;
+			margin-top:10px;
+			position:relative;
+			
+		}	
+		.main{
+			width:700px;
+			display:flex;
+			margin-left:auto;
+			margin-right: auto;
+			flex-wrap: wrap;
+		}
+		.mole{
+			background-image:url(banana.png);
+			height:200px;
+			width:200px;
+			position: absolute;
+			transition:1s;
+			top:0;	
+			left:0;
+		}
+		.img{
+			height:200px;
+			width:200px;
+			
+		}
+	</style>
+</head>
+<body>
+	<h1>Очки: <span class="score ">0</span> из 20</h1>
+	<div class="main" style="">	
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+		<div class="hole">
+			<img class="img" src="monkey.png">
+		</div>
+	</div>
+	
+	 
+		
+	
+<script type="text/javascript">
+function random(number){
+	let n = Math.random()
+	let big_n = n*9
+	let big_n1 =Math.round(big_n)
+	return big_n1
+}
+let x = 0	
+let score = 0
+let score_elem = document.querySelector(".score")
+function create_mole(){
+	let hole = document.querySelectorAll(".hole")
+	let mole = document.createElement("div")
+	hole[random()].appendChild(mole)
+	mole.classList.add("mole")
+	mole.onclick = function(){
+		mole.style.display = "none"
+		score = score + 1
+		score_elem.innerHTML = score
+	}
+	setTimeout(move_mole,500)
+	function move_mole(){
+		mole.style.top = -100 +"px"
+	}
+	setTimeout(move_mole_top,1000)
+	function move_mole_top(){
+		mole.style.top = 0 + "px"
+	
+	}
+	setTimeout(del_mole,1500 )
+	function del_mole(){
+		mole.style.display = "none"
+	}
+	
+
+}
+	let create = setInterval(create_mole,500)
+	function end_game(){
+		clearInterval(create)
+		if(score>=20){
+			alert("you won")
+		}
+		else if(score<20){
+			alert("you loze")
+		}
+	}
+	setTimeout(end_game,15000)
+	setTimeout()
+</script>
+</body>
+</html>
